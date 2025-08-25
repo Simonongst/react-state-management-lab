@@ -143,11 +143,25 @@ function SelectedZombieFighter({ team }) {
   );
 }
 
+let totalStrength = 0;
+for (let i = 0; i < team.length; i++) {
+  const member = team[i];
+  totalStrength += member.strength;
+}
+let totalAgility = 0;
+for (let i = 0; i < team.length; i++) {
+  const member = team[i];
+  totalAgility += member.agility;
+}
+
   return (
     <>
       <h1>Zombie Fighters</h1>
       <h2>Money: {money}</h2>
+      <h3>Team Strength: {totalStrength}</h3>
+      <h3>Team Agility: {totalAgility}</h3>
       <SelectedZombieFighter team={team} />
+      <h3>Fighters</h3>
       <ul>
           {zombieFighters.map(zombieFighter => (
             <li key={zombieFighter.id}>
@@ -157,7 +171,6 @@ function SelectedZombieFighter({ team }) {
       </ul>
     </>
   );
-
 
 };
 
