@@ -102,6 +102,12 @@ const handleAddFighter = (fighter) => {
   );
 };
 
+function handleRemoveFighter(fighter) {
+  setTeam(prevTeam => prevTeam.filter(member => member.id !== fighter.id));
+  setZombieFighters(prevFighters => [...prevFighters, fighter]);
+  setMoney(prevMoney => prevMoney + fighter.price);
+};
+
 function ZombieFighters({ fighter }) {
   const { name, price, strength, agility, img } = fighter;
 
