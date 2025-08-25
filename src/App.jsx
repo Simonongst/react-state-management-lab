@@ -117,11 +117,37 @@ function ZombieFighters({ fighter }) {
   );
 }
 
+function SelectedZombieFighter({ team }) {
+  return (
+    <div>
+      <h3>Team</h3>
+      {team.length === 0 ? (
+        <p>Pick some team members</p>
+      ) : (
+        <ul>
+          {team.map(member => (
+            <li key={member.id}>
+              <div>
+                <img src={member.img} alt={member.name} />
+                <h3>{member.name}</h3>
+                <p>Price: {member.price}</p>
+                <p>Strength: {member.strength}</p>
+                <p>Agility: {member.agility}</p>
+                <button onClick={() => handleRemoveFighter(member)}>Remove</button>
+              </div>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
+  );
+}
+
   return (
     <>
       <h1>Zombie Fighters</h1>
       <h2>Money: {money}</h2>
- 
+      <SelectedZombieFighter team={team} />
       <ul>
           {zombieFighters.map(zombieFighter => (
             <li key={zombieFighter.id}>
